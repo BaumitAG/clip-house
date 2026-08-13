@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>clip-house — Clip-Marketing für Labels & Artists</title>
-<meta name="description" content="clip-house clippt Podcast-Auftritte, Interviews und Streams von Artists — und macht daraus Reichweite für die Musik. Das Clipper-Netzwerk für den deutschen Musikmarkt. Pakete mit 20, 40 oder 80 Clips.">
+<meta name="description" content="clip-house clippt Podcast-Auftritte, Interviews und Streams von Artists und baut kreative Edits mit dem Song — Reichweite für die Musik. Das Clipper-Netzwerk für den deutschen Musikmarkt. Pakete mit 20, 40 oder 80 Clips.">
 <meta name="theme-color" content="#08080a">
 <script>document.documentElement.classList.add('js');</script>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="clip-house — Clip-Marketing für Labels & Artists">
-<meta property="og:description" content="Podcast-Auftritte, Interviews und Streams geclippt und ausgespielt. Aus Aufmerksamkeit für die Person wird Reichweite für die Musik.">
+<meta property="og:description" content="Takes aus Podcasts, Interviews und Streams. Edits, in denen der Song die Pointe ist. Beides ausgespielt über unser Clipper-Netzwerk.">
 <meta property="og:locale" content="de_DE">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23d6ff3f'/><path d='M38 30 L72 50 L38 70 Z' fill='%2308080a'/></svg>">
@@ -299,25 +299,38 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
 .step h3{ font-size:1.05rem; margin-bottom:10px; }
 .step p{ font-size:.9rem; color:var(--text-muted); }
 
-/* ---------- Mechanik: Auftritt → Clip → Person → Musik ---------- */
-.flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:15px; }
-.flow__node{
-  position:relative; padding:28px 22px;
+/* ---------- Mechanik: zwei Spielarten, ein Ziel ---------- */
+.paths{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.path{
+  position:relative; padding:32px 28px;
   border:1px solid var(--line); border-radius:var(--radius);
-  background:linear-gradient(180deg, rgba(255,255,255,.042), rgba(255,255,255,.012));
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
 }
-.flow__node:not(:last-child)::after{
-  content:"→"; position:absolute; right:-20px; top:50%; transform:translateY(-50%);
+/* Pfeil in den Zwischenraum vor der Ziel-Leiste */
+.path::after{
+  content:"↓"; position:absolute; bottom:-26px; left:50%; transform:translateX(-50%);
   color:var(--text-dim); font-size:1.15rem; font-weight:700; z-index:2;
 }
-.flow__k{ font-size:.7rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); }
-.flow__node h3{ font-size:1.14rem; margin:11px 0 12px; }
-.flow__node p{ font-size:.89rem; color:var(--text-muted); }
-.flow__node--goal{
-  border-color:rgba(214,255,63,.32);
-  background:linear-gradient(180deg, rgba(214,255,63,.11), rgba(214,255,63,.02));
+.path__k{ font-size:.7rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+.path h3{ font-size:1.45rem; margin:12px 0 14px; }
+.path p{ font-size:.94rem; color:var(--text-muted); }
+.path__ex{ margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
+.path__ex b{
+  display:block; font-size:.7rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:8px;
 }
-.flow__node--goal .flow__k{ color:var(--accent); }
+.path__ex span{ font-size:.89rem; color:var(--text-muted); font-style:italic; }
+
+.converge{
+  margin-top:42px; padding:32px;
+  border:1px solid rgba(214,255,63,.32); border-radius:var(--radius);
+  background:linear-gradient(115deg, rgba(214,255,63,.12), rgba(139,92,255,.08) 70%, rgba(255,255,255,.02));
+  display:flex; gap:34px; align-items:center; flex-wrap:wrap;
+}
+.converge__hd{ flex:0 0 auto; }
+.converge__k{ font-size:.7rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+.converge h3{ font-size:1.9rem; margin-top:10px; }
+.converge p{ flex:1 1 340px; font-size:.96rem; color:var(--text-muted); }
 
 .sources{
   margin-top:22px; padding:26px 28px;
@@ -486,8 +499,8 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
   .stat:nth-child(-n+2){ border-bottom:1px solid var(--line); }
   .g-4{ grid-template-columns:repeat(2,1fr); }
   .steps{ grid-template-columns:repeat(2,1fr); }
-  .flow{ grid-template-columns:repeat(2,1fr); }
-  .flow__node:nth-child(2)::after{ content:none; }  /* Zeilenende, kein Pfeil ins Leere */
+  .converge{ gap:22px; }
+  .converge h3{ font-size:1.6rem; }
   .pricing{ grid-template-columns:1fr; }
   .plan--feature{ order:-1; }
   .contact{ grid-template-columns:1fr; gap:40px; }
@@ -495,12 +508,9 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
 @media (max-width: 720px){
   .section{ padding:78px 0; }
   .hero{ padding:140px 0 60px; }
-  .g-2,.g-3,.g-4,.compare,.steps,.flow{ grid-template-columns:1fr; }
-  /* Pfeile zeigen im gestapelten Zustand nach unten */
-  .flow{ gap:26px; }
-  .flow__node:not(:last-child)::after{
-    content:"↓"; right:auto; left:50%; top:auto; bottom:-22px; transform:translateX(-50%);
-  }
+  .g-2,.g-3,.g-4,.compare,.steps,.paths{ grid-template-columns:1fr; }
+  .paths{ gap:34px; }
+  .path::after{ bottom:-24px; }
   .form__row{ grid-template-columns:1fr; }
   .band{ padding:36px 26px; }
   .form{ padding:26px 22px; }
@@ -579,10 +589,10 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
     </h1>
 
     <p class="lead">
-      clip-house ist das Clipper-Netzwerk für den deutschen Musikmarkt. Wir sichten Podcast-Auftritte,
-      Interviews und Streams eurer Artists, schneiden daraus die Momente, die für sich funktionieren,
-      und spielen sie über die Kanäle unseres Netzwerks aus. Aus Aufmerksamkeit für die Person
-      wird Reichweite für die Musik.
+      clip-house ist das Clipper-Netzwerk für den deutschen Musikmarkt. Wir schneiden aus
+      Podcast-Auftritten, Interviews und Streams die Momente, die für sich stehen — und bauen
+      kreative Edits, in denen der Song selbst die Pointe ist. Ausgespielt über die Kanäle unseres
+      Netzwerks. Aus Aufmerksamkeit wird Reichweite für die Musik.
     </p>
 
     <div class="hero__actions">
@@ -603,20 +613,22 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
         <span class="marquee__item">Podcast-Auftritte</span>
         <span class="marquee__item">Interviews</span>
         <span class="marquee__item">Stream-Momente</span>
+        <span class="marquee__item">Meme-Edits</span>
         <span class="marquee__item">TikTok</span>
         <span class="marquee__item">Instagram Reels</span>
         <span class="marquee__item">YouTube Shorts</span>
-        <span class="marquee__item">Backstage &amp; Tour</span>
+        <span class="marquee__item">Sound-Drops</span>
         <span class="marquee__item">Artist-Aufbau</span>
       </div>
       <div class="marquee__group">
         <span class="marquee__item">Podcast-Auftritte</span>
         <span class="marquee__item">Interviews</span>
         <span class="marquee__item">Stream-Momente</span>
+        <span class="marquee__item">Meme-Edits</span>
         <span class="marquee__item">TikTok</span>
         <span class="marquee__item">Instagram Reels</span>
         <span class="marquee__item">YouTube Shorts</span>
-        <span class="marquee__item">Backstage &amp; Tour</span>
+        <span class="marquee__item">Sound-Drops</span>
         <span class="marquee__item">Artist-Aufbau</span>
       </div>
     </div>
@@ -652,45 +664,67 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
   <div class="wrap">
     <div class="shead rv">
       <span class="eyebrow eyebrow--plain">Die Mechanik</span>
-      <h2 class="h-lg">Niemand teilt eine Anzeige.<br>Aber jeder teilt einen guten Take.</h2>
+      <h2 class="h-lg">Niemand teilt eine Anzeige.<br>Aber jeder teilt einen guten Take — oder ein gutes Meme.</h2>
       <p class="lead">
-        Ein Ausschnitt aus dem Musikvideo ist als Werbung erkennbar, bevor er zu Ende geladen hat —
-        und wird weggescrollt. Ein Artist, der im Podcast eine Geschichte erzählt, im Interview
-        Klartext redet oder im Stream ausrastet: Das schauen Leute freiwillig und schicken es weiter.
-        Genau diese Momente clippen wir. Die Musik läuft mit — und wird gesucht, sobald die Person
-        hängen bleibt.
+        Ein Ausschnitt aus dem Musikvideo ist als Werbung erkennbar, bevor er zu Ende geladen hat,
+        und wird weggescrollt. Was funktioniert, muss für sich stehen: ein Artist, der im Podcast
+        eine Geschichte erzählt — oder ein Meme-Aufbau, der auf den Drop schneidet. Beides schauen
+        Leute freiwillig, beides schicken sie weiter. Wir bespielen beide Wege, und beide enden an
+        derselben Stelle.
       </p>
     </div>
 
-    <div class="flow rv">
-      <article class="flow__node">
-        <span class="flow__k">Schritt 1</span>
-        <h3>Der Auftritt</h3>
-        <p>Der Artist sitzt im Podcast, gibt ein Interview, ist im Stream. Dort entstehen Storys, Meinungen, Schlagabtausch — Material, das sonst nach dem Upload liegen bleibt.</p>
+    <div class="paths rv">
+      <article class="path">
+        <span class="path__k">Spielart 01</span>
+        <h3>Der Take</h3>
+        <p>
+          Aus Podcast-Auftritten, Interviews und Streams schneiden wir die Momente, die für sich
+          stehen: Storys, steile Meinungen, Schlagabtausch. Hier verkauft die Person — die Leute
+          merken sich den Menschen und suchen danach den Namen.
+        </p>
+        <div class="path__ex">
+          <b>Beispiel</b>
+          <span>Rapper erzählt im Podcast, wie ein Deal geplatzt ist. 45 Sekunden, Pointe am Ende, der Song läuft darunter.</span>
+        </div>
       </article>
-      <article class="flow__node">
-        <span class="flow__k">Schritt 2</span>
-        <h3>Der Clip</h3>
-        <p>Daraus schneiden wir Momente, die ohne Vorwissen funktionieren: Hook in der ersten Sekunde, Pointe am Ende. Aus zwei Stunden werden 40 Sekunden, die für sich stehen.</p>
-      </article>
-      <article class="flow__node">
-        <span class="flow__k">Schritt 3</span>
-        <h3>Die Person</h3>
-        <p>Die Leute merken sich den Menschen, nicht die Kampagne. Ein Take, der hängen bleibt, baut mehr auf als zehn Clips, die nach Promo aussehen.</p>
-      </article>
-      <article class="flow__node flow__node--goal">
-        <span class="flow__k">Das Ziel</span>
-        <h3>Die Musik</h3>
-        <p>Wer den Artist feiert, sucht den Namen. Über Profil, Sound unter dem Clip und Kommentarspalte ist der Weg von der Person zur Musik kurz.</p>
+
+      <article class="path">
+        <span class="path__k">Spielart 02</span>
+        <h3>Der Edit</h3>
+        <p>
+          Hier ist die Musik selbst der Inhalt. Ein Meme, ein Trend-Format oder ein Aufbau, der
+          hart auf den Drop schneidet — der Song ist die Pointe, nicht die Werbebotschaft. Damit
+          landet der Sound auch bei Leuten im Ohr, die den Artist noch gar nicht kennen.
+        </p>
+        <div class="path__ex">
+          <b>Beispiel</b>
+          <span>Meme-Setup, harter Cut auf den Drop. Wer den Übergang feiert, hat den Song gehört, bevor er weiß, von wem er ist.</span>
+        </div>
       </article>
     </div>
 
+    <div class="converge rv">
+      <div class="converge__hd">
+        <span class="converge__k">Beide Wege enden hier</span>
+        <h3>Die Musik</h3>
+      </div>
+      <p>
+        Profil, Sound-Seite, Suche: Der Take baut den Artist als Person auf, der Edit bringt den
+        Song direkt in den Feed. In einer Kampagne mischen wir beides — in welchem Verhältnis,
+        hängt vom Artist ab. Wer viel unterwegs ist und gut redet, trägt über Takes. Wer einen
+        Song mit einem Moment hat, der sitzt, trägt über Edits.
+      </p>
+    </div>
+
     <div class="sources rv">
-      <h4>Woraus wir clippen</h4>
+      <h4>Womit wir arbeiten</h4>
       <div class="chips">
         <span class="chip">Podcast-Auftritte</span>
         <span class="chip">Interviews</span>
         <span class="chip">Twitch- &amp; YouTube-Streams</span>
+        <span class="chip">Musik &amp; Release-Assets</span>
+        <span class="chip">Meme- &amp; Trend-Formate</span>
         <span class="chip">Backstage &amp; Tour</span>
         <span class="chip">Presse- &amp; Radiotermine</span>
         <span class="chip">Q&amp;A- und Reaction-Formate</span>
@@ -750,7 +784,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Wir sichten das Material und ziehen die Momente raus, die tragen.
+            Wir sichten das Material, ziehen die Momente raus und liefern die Edit-Ideen dazu.
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -778,17 +812,17 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
       <article class="step">
         <div class="step__bar"></div>
         <h3>Briefing</h3>
-        <p>Ihr sagt uns, welcher Artist gepusht wird, welches Material freigegeben ist und worauf es einzahlen soll: Release, Tour oder Kanalaufbau.</p>
+        <p>Ihr sagt uns, welcher Artist gepusht wird, welches Material und welcher Song freigegeben sind und worauf es einzahlen soll: Release, Tour oder Kanalaufbau.</p>
       </article>
       <article class="step">
         <div class="step__bar"></div>
-        <h3>Sichtung</h3>
-        <p>Wir gehen durch Podcast-Folgen, Interviews und Stream-Mitschnitte und bauen daraus eine Liste der Momente mit Potenzial.</p>
+        <h3>Sichtung &amp; Konzept</h3>
+        <p>Wir gehen durch Podcast-Folgen, Interviews und Mitschnitte und listen die Momente mit Potenzial. Parallel legen wir fest, welche Edit-Ideen zum Song passen.</p>
       </article>
       <article class="step">
         <div class="step__bar"></div>
         <h3>Casting &amp; Schnitt</h3>
-        <p>Passende Clipper übernehmen die Momente und schneiden sie so, wie es auf ihrem Kanal und für ihr Publikum funktioniert.</p>
+        <p>Passende Clipper übernehmen Takes und Edits und bauen sie so, wie es auf ihrem Kanal und für ihr Publikum funktioniert.</p>
       </article>
       <article class="step">
         <div class="step__bar"></div>
@@ -817,13 +851,13 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
       <article class="card">
         <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <h3>Rechte &amp; Nutzung geklärt</h3>
-        <p>Freigegebenes Material, definierte Nutzungsdauer, klare Kennzeichnung als Werbung. Bei Podcast- und Interview-Material klären wir mit, ob die Rechte beim Format oder beim Artist liegen — das wird gern übersehen.</p>
+        <p>Freigegebenes Material, freigegebener Song, definierte Nutzungsdauer, klare Kennzeichnung als Werbung. Bei Podcast- und Interview-Material klären wir mit, ob die Rechte beim Format oder beim Artist liegen — das wird gern übersehen.</p>
       </article>
 
       <article class="card">
         <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <h3>Sichtung inklusive</h3>
-        <p>Ihr müsst uns nicht sagen, welche Minute gut ist. Wir gehen durch das Material und finden die Momente — das ist der Teil der Arbeit, den sonst niemand macht.</p>
+        <h3>Sichtung &amp; Ideen</h3>
+        <p>Ihr müsst uns nicht sagen, welche Minute gut ist oder welches Format gerade läuft. Wir finden die Momente im Material und die Edit-Ideen zum Song — das ist der Teil der Arbeit, den sonst niemand macht.</p>
       </article>
 
       <article class="card">
@@ -865,16 +899,16 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
       <article class="plan">
         <span class="plan__name">Starter</span>
         <div class="plan__amount"><b>20</b><span>Clips</span></div>
-        <p class="plan__for">Für einen einzelnen Auftritt — eine Podcast-Folge, ein Interview — oder als erster Test des Kanals.</p>
+        <p class="plan__for">Für einen einzelnen Auftritt, einen einzelnen Song — oder als erster Test des Kanals.</p>
         <div class="plan__price">
           <b>Preis auf Anfrage</b>
           <small>Angebot innerhalb von 24 Std.</small>
         </div>
         <ul class="tick">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>20 veröffentlichte Clips</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Material aus 1 Quelle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Takes <i>oder</i> Edits — eine Spielart</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 Plattform nach Wahl</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sichtung &amp; Momentauswahl</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sichtung &amp; Konzept</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Linkliste zum Abschluss</li>
         </ul>
         <a href="#kontakt" class="btn btn--ghost btn--block" data-plan="Starter — 20 Clips">Anfragen</a>
@@ -891,6 +925,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
         </div>
         <ul class="tick">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>40 veröffentlichte Clips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Takes <i>und</i> Edits im Mix</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Material aus mehreren Quellen</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>2 Plattformen im Mix</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gestaffelter Ausspielplan</li>
@@ -910,6 +945,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
         </div>
         <ul class="tick">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>80 veröffentlichte Clips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Take-/Edit-Verhältnis laufend nachjustiert</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Laufende Sichtung neuer Auftritte</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Alle 3 Plattformen</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mehrere Artists pro Kampagne möglich</li>
@@ -939,9 +975,10 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
         <span class="eyebrow eyebrow--plain">Für Clipper</span>
         <h2 style="margin-top:20px;">Du clippst sowieso schon.<br>Mach einen Auftrag daraus.</h2>
         <p>
-          Wir suchen laufend Clipper mit eigenen Accounts, die aus einer zweistündigen Podcast-Folge
-          die 40 Sekunden rausholen, die laufen. Gespür für Timing, sauberer Schnitt, Deadlines
-          eingehalten — dafür gibt es bezahlte Aufträge mit klarem Briefing statt Arbeit auf Verdacht.
+          Wir suchen laufend Clipper mit eigenen Accounts: Leute, die aus einer zweistündigen
+          Podcast-Folge die 40 Sekunden rausholen, die laufen — oder ein Meme so bauen, dass der
+          Drop sitzt. Gespür für Timing, sauberer Schnitt, Deadlines eingehalten. Dafür gibt es
+          bezahlte Aufträge mit klarem Briefing statt Arbeit auf Verdacht.
         </p>
         <div class="band__pts">
           <span class="band__pt"><b>Bezahlte</b> Aufträge</span>
@@ -966,19 +1003,19 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
     <div class="faq rv">
       <details>
         <summary>Was ist Clipping überhaupt?</summary>
-        <p>Clipper schneiden aus langem Material — Podcast-Folgen, Interviews, Stream-Mitschnitten, Backstage-Footage — kurze Videos für TikTok, Reels und Shorts und veröffentlichen sie über eigene Accounts. Aus einem Auftritt, den sonst ein paar tausend Leute zu Ende schauen, werden Dutzende Einstiegspunkte im Feed.</p>
+        <p>Clipper bauen kurze Videos für TikTok, Reels und Shorts und veröffentlichen sie über eigene Accounts. Bei uns auf zwei Wegen: als <b>Take</b> — ein Ausschnitt aus Podcast, Interview oder Stream, der für sich funktioniert. Oder als <b>Edit</b> — ein Meme- oder Trend-Format, das auf den Song schneidet. In beiden Fällen entstehen aus einem Auftritt oder einem Release Dutzende Einstiegspunkte im Feed.</p>
       </details>
       <details>
-        <summary>Warum Podcasts und Interviews statt Musikvideos?</summary>
-        <p>Weil ein Musikvideo-Ausschnitt sofort als Werbung erkennbar ist und weggescrollt wird. Ein Artist, der eine Geschichte erzählt, eine steile Meinung raushaut oder sich mit jemandem anlegt, ist Content, den Leute freiwillig anschauen und weiterschicken. Über die Person entsteht die Aufmerksamkeit — die Musik ist das, was danach gesucht wird. Deshalb setzen wir vorne an.</p>
+        <summary>Warum keine Musikvideo-Ausschnitte?</summary>
+        <p>Die Musik kommt sehr wohl vor — nur nicht als recycelter Videoausschnitt. Ein abgefilmtes Musikvideo ist in einer halben Sekunde als Werbung erkennbar und wird weggescrollt. Ein Edit dagegen ist ein natives Format: Der Aufbau trägt, der Drop ist die Pointe, und der Song landet im Ohr, bevor jemand merkt, dass da beworben wird. Derselbe Song, ein völlig anderer Effekt — der Unterschied liegt in der Verpackung, nicht im Material.</p>
       </details>
       <details>
-        <summary>Was, wenn es kaum Material gibt?</summary>
-        <p>Dann sagen wir das offen, bevor ihr bucht. Für eine sinnvolle Kampagne brauchen wir Auftritte, in denen der Artist wirklich spricht — Podcast, Interview, Stream, Q&amp;A. Wenn es das noch nicht gibt, ist der erste Schritt, solche Auftritte zu bekommen, nicht Clips zu buchen. Wir sagen euch gerne, welche Formate für den jeweiligen Artist realistisch sind.</p>
+        <summary>Was, wenn es kaum Auftritte gibt?</summary>
+        <p>Dann fahren wir schwerpunktmäßig Edits. Für Takes brauchen wir Formate, in denen der Artist wirklich spricht — Podcast, Interview, Stream, Q&amp;A. Fehlt das, funktioniert die Edit-Seite trotzdem: Dafür reichen der freigegebene Song und passende Visuals. Wir sagen euch vor dem Angebot ehrlich, welcher Mix bei eurem Artist realistisch ist — und wann es sinnvoller wäre, erst Auftritte zu organisieren.</p>
       </details>
       <details>
         <summary>Wer produziert die Clips — ihr oder die Creator?</summary>
-        <p>Wir sichten das Material und legen fest, welche Momente raus sollen. Den Schnitt machen die Clipper aus unserem Netzwerk: Sie kennen die Formate ihrer Kanäle und wissen, was dort funktioniert. Wir prüfen das Ergebnis gegen eure Vorgaben, bevor es live geht.</p>
+        <p>Wir sichten das Material, legen fest, welche Momente raus sollen, und entwickeln die Edit-Ideen zum Song. Gebaut wird von den Clippern aus unserem Netzwerk: Sie kennen die Formate ihrer Kanäle und wissen, was dort gerade läuft. Wir prüfen das Ergebnis gegen eure Vorgaben, bevor es live geht.</p>
       </details>
       <details>
         <summary>Wie ist das rechtlich abgesichert?</summary>
@@ -1082,7 +1119,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
 
       <div class="field">
         <label for="f-msg">Welches Material gibt es?</label>
-        <textarea id="f-msg" name="nachricht" placeholder="Podcast-Auftritte, Interviews, Streams, eigenes Rohmaterial? Dazu gern: Release-Datum, Ziel der Kampagne, Besonderheiten …" required></textarea>
+        <textarea id="f-msg" name="nachricht" placeholder="Podcast-Auftritte, Interviews, Streams, eigenes Rohmaterial? Welcher Song ist freigegeben? Dazu gern: Release-Datum, Ziel der Kampagne, Besonderheiten …" required></textarea>
       </div>
 
       <div class="consent">
@@ -1112,7 +1149,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
           </span>
           <span>clip<i>-</i>house</span>
         </a>
-        <p>Das Clipper-Netzwerk für den deutschen Musikmarkt. Wir machen aus Podcast-Auftritten, Interviews und Streams die Clips, die eure Artists im Feed halten.</p>
+        <p>Das Clipper-Netzwerk für den deutschen Musikmarkt. Takes aus Podcasts, Interviews und Streams — Edits, in denen der Song die Pointe ist. Beides ausgespielt, wo eure Artists gefunden werden.</p>
       </div>
 
       <div class="ftr__cols">
