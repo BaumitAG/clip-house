@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>clip-house — Clip-Marketing für Labels & Artists</title>
+<meta name="description" content="clip-house clippt Podcast-Auftritte, Interviews und Streams von Artists — und macht daraus Reichweite für die Musik. Das Clipper-Netzwerk für den deutschen Musikmarkt. Pakete mit 20, 40 oder 80 Clips.">
+<meta name="theme-color" content="#08080a">
+<script>document.documentElement.classList.add('js');</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="clip-house — Clip-Marketing für Labels & Artists">
+<meta property="og:description" content="Podcast-Auftritte, Interviews und Streams geclippt und ausgespielt. Aus Aufmerksamkeit für die Person wird Reichweite für die Musik.">
+<meta property="og:locale" content="de_DE">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23d6ff3f'/><path d='M38 30 L72 50 L38 70 Z' fill='%2308080a'/></svg>">
+
+<style>
+/* =========================================================
+   clip-house — Landing Page
+   Eine Datei, keine externen Abhängigkeiten.
+   Farben, Texte und Kontaktdaten stehen weiter unten
+   in :root bzw. direkt im Markup und sind frei änderbar.
+   ========================================================= */
+
+:root{
+  --bg:            #08080a;
+  --bg-elev:       #101014;
+  --bg-elev-2:     #16161c;
+  --line:          rgba(255,255,255,.09);
+  --line-strong:   rgba(255,255,255,.18);
+  --text:          #f5f5f7;
+  --text-muted:    #a0a0ab;
+  --text-dim:      #6e6e7a;
+  --accent:        #d6ff3f;
+  --accent-deep:   #a8d61f;
+  --violet:        #8b5cff;
+  --pink:          #ff4d9d;
+  --radius:        18px;
+  --radius-lg:     26px;
+  --maxw:          1180px;
+  --ease:          cubic-bezier(.22,1,.36,1);
+  --font: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:96px; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button,input,select,textarea{ font:inherit; color:inherit; }
+
+h1,h2,h3,h4{ margin:0; line-height:1.08; letter-spacing:-.035em; font-weight:800; }
+p{ margin:0; }
+
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:22px; }
+.section{ padding:110px 0; position:relative; }
+.section--tight{ padding:80px 0; }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  padding:7px 14px 7px 11px;
+  border:1px solid rgba(214,255,63,.28);
+  border-radius:100px;
+  background:rgba(214,255,63,.06);
+}
+.eyebrow::before{
+  content:""; width:6px; height:6px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 12px var(--accent);
+}
+.eyebrow--plain{ color:var(--text-muted); border-color:var(--line); background:rgba(255,255,255,.03); }
+.eyebrow--plain::before{ background:var(--text-dim); box-shadow:none; }
+
+.h-xl{ font-size:clamp(2.6rem, 7vw, 5rem); }
+.h-lg{ font-size:clamp(2rem, 4.6vw, 3.3rem); }
+.h-md{ font-size:clamp(1.35rem, 2.4vw, 1.7rem); }
+.grad{
+  background:linear-gradient(100deg,var(--accent) 0%, #c9ff7a 46%, #ab8dff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.lead{ font-size:clamp(1.02rem,1.35vw,1.18rem); color:var(--text-muted); max-width:62ch; }
+.muted{ color:var(--text-muted); }
+.dim{ color:var(--text-dim); }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:15px 26px; border-radius:100px; border:1px solid transparent;
+  font-weight:700; font-size:.95rem; letter-spacing:-.01em; cursor:pointer;
+  transition:transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease);
+  white-space:nowrap;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn:active{ transform:translateY(0); }
+.btn--primary{ background:var(--accent); color:#0a0a0c; box-shadow:0 8px 30px -10px rgba(214,255,63,.65); }
+.btn--primary:hover{ background:#e4ff6d; box-shadow:0 14px 40px -12px rgba(214,255,63,.8); }
+.btn--ghost{ background:rgba(255,255,255,.04); border-color:var(--line-strong); color:var(--text); }
+.btn--ghost:hover{ background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.34); }
+.btn--sm{ padding:11px 20px; font-size:.875rem; }
+.btn--block{ width:100%; }
+.btn .arr{ transition:transform .25s var(--ease); }
+.btn:hover .arr{ transform:translateX(3px); }
+
+/* ---------- Header ---------- */
+.hdr{
+  position:fixed; inset:0 0 auto 0; z-index:80;
+  padding:16px 0;
+  transition:background .3s var(--ease), backdrop-filter .3s var(--ease), border-color .3s var(--ease), padding .3s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.hdr.is-stuck{
+  background:rgba(8,8,10,.78);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border-bottom-color:var(--line);
+  padding:10px 0;
+}
+.hdr__inner{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
+
+.logo{ display:inline-flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.045em; font-size:1.2rem; }
+.logo__mark{
+  width:32px; height:32px; border-radius:10px; flex:0 0 auto;
+  background:linear-gradient(140deg,var(--accent),var(--accent-deep));
+  display:grid; place-items:center;
+  box-shadow:0 6px 20px -8px rgba(214,255,63,.8);
+}
+.logo__mark svg{ width:14px; height:14px; }
+.logo span{ color:var(--text); }
+.logo span i{ font-style:normal; color:var(--accent); }
+
+.nav{ display:flex; align-items:center; gap:34px; }
+.nav a{ font-size:.9rem; font-weight:600; color:var(--text-muted); transition:color .2s; position:relative; }
+.nav a:hover{ color:var(--text); }
+.nav a::after{
+  content:""; position:absolute; left:0; right:100%; bottom:-6px; height:1.5px;
+  background:var(--accent); transition:right .3s var(--ease);
+}
+.nav a:hover::after{ right:0; }
+
+.hdr__cta{ display:flex; align-items:center; gap:12px; }
+
+.burger{
+  display:none; width:42px; height:42px; border-radius:12px;
+  background:rgba(255,255,255,.05); border:1px solid var(--line);
+  cursor:pointer; padding:0; place-items:center;
+}
+.burger span{ display:block; width:17px; height:1.8px; background:var(--text); border-radius:2px; transition:transform .3s var(--ease), opacity .2s; }
+.burger span+span{ margin-top:4.5px; }
+body.menu-open .burger span:nth-child(1){ transform:translateY(6.3px) rotate(45deg); }
+body.menu-open .burger span:nth-child(2){ opacity:0; }
+body.menu-open .burger span:nth-child(3){ transform:translateY(-6.3px) rotate(-45deg); }
+
+.mobile-nav{
+  position:fixed; inset:0; z-index:70;
+  background:rgba(8,8,10,.97);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  display:flex; flex-direction:column; justify-content:center; gap:6px;
+  padding:0 30px;
+  opacity:0; visibility:hidden; transform:translateY(-12px);
+  transition:opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+}
+body.menu-open .mobile-nav{ opacity:1; visibility:visible; transform:none; }
+.mobile-nav a{
+  font-size:2rem; font-weight:800; letter-spacing:-.04em;
+  padding:12px 0; border-bottom:1px solid var(--line);
+}
+.mobile-nav .btn{ margin-top:26px; }
+
+/* ---------- Hero ---------- */
+.hero{ position:relative; padding:180px 0 90px; overflow:hidden; }
+.hero__bg{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+.hero__glow{
+  position:absolute; border-radius:50%; filter:blur(110px); opacity:.5;
+}
+.hero__glow--1{ width:640px; height:640px; top:-260px; left:-180px; background:rgba(214,255,63,.16); }
+.hero__glow--2{ width:560px; height:560px; top:-120px; right:-200px; background:rgba(139,92,255,.22); }
+.hero__glow--3{ width:420px; height:420px; bottom:-260px; left:38%; background:rgba(255,77,157,.12); }
+.hero__grid{
+  position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 78%);
+}
+.hero__inner{ position:relative; z-index:1; }
+.hero h1{ margin:26px 0 24px; max-width:16ch; }
+.hero .lead{ max-width:56ch; }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:13px; margin-top:38px; }
+.hero__note{ margin-top:20px; font-size:.85rem; color:var(--text-dim); display:flex; align-items:center; gap:6px 16px; flex-wrap:wrap; }
+.hero__note b{ color:var(--text-muted); font-weight:600; }
+/* Trennpunkte hängen am jeweiligen Element — beim Umbruch bleibt kein
+   verwaistes „·“ am Zeilenanfang stehen. */
+.hero__note span{ display:inline-flex; align-items:center; gap:16px; }
+.hero__note span::before{ content:"·"; color:var(--text-dim); }
+
+/* Marquee */
+.marquee{
+  margin-top:76px; position:relative; z-index:1;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  padding:18px 0; overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.marquee__track{ display:flex; width:max-content; animation:slide 34s linear infinite; }
+.marquee__group{ display:flex; align-items:center; gap:44px; padding-right:44px; }
+.marquee__item{
+  font-size:.95rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-dim); display:inline-flex; align-items:center; gap:14px; white-space:nowrap;
+}
+.marquee__item::after{ content:""; width:5px; height:5px; border-radius:50%; background:rgba(214,255,63,.55); }
+@keyframes slide{ to{ transform:translateX(-50%); } }
+
+/* ---------- Stat-Leiste ---------- */
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+  overflow:hidden;
+}
+.stat{ padding:30px 26px; border-right:1px solid var(--line); }
+.stat:last-child{ border-right:none; }
+.stat__num{ font-size:clamp(1.7rem,3vw,2.3rem); font-weight:800; letter-spacing:-.04em; color:var(--accent); }
+.stat__lbl{ margin-top:6px; font-size:.86rem; color:var(--text-muted); line-height:1.45; }
+
+/* ---------- Section-Kopf ---------- */
+.shead{ max-width:64ch; margin-bottom:52px; }
+.shead h2{ margin:22px 0 18px; }
+.shead--center{ margin-inline:auto; text-align:center; }
+.shead--center .lead{ margin-inline:auto; }
+
+/* ---------- Karten ---------- */
+.grid{ display:grid; gap:20px; }
+.g-2{ grid-template-columns:repeat(2,1fr); }
+.g-3{ grid-template-columns:repeat(3,1fr); }
+.g-4{ grid-template-columns:repeat(4,1fr); }
+
+.card{
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px;
+  transition:border-color .3s var(--ease), transform .3s var(--ease), background .3s var(--ease);
+}
+.card:hover{ border-color:var(--line-strong); transform:translateY(-3px); background:var(--bg-elev-2); }
+.card h3{ font-size:1.12rem; margin-bottom:10px; letter-spacing:-.02em; }
+.card p{ font-size:.94rem; color:var(--text-muted); }
+.card__ico{
+  width:44px; height:44px; border-radius:13px; display:grid; place-items:center; margin-bottom:18px;
+  background:rgba(214,255,63,.1); border:1px solid rgba(214,255,63,.2); color:var(--accent);
+}
+.card__ico svg{ width:20px; height:20px; }
+
+/* Vergleich US / DE */
+.compare{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.compare__col{
+  border:1px solid var(--line); border-radius:var(--radius); padding:32px;
+  background:var(--bg-elev);
+}
+.compare__col--now{
+  background:linear-gradient(165deg, rgba(214,255,63,.09), rgba(139,92,255,.07));
+  border-color:rgba(214,255,63,.26);
+}
+.compare__tag{
+  font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-dim);
+}
+.compare__col--now .compare__tag{ color:var(--accent); }
+.compare__col h3{ font-size:1.3rem; margin:12px 0 20px; }
+.tick{ list-style:none; margin:0; padding:0; display:grid; gap:13px; }
+.tick li{ display:flex; gap:12px; font-size:.94rem; color:var(--text-muted); align-items:flex-start; }
+.tick li svg{ flex:0 0 auto; width:17px; height:17px; margin-top:3px; color:var(--accent); }
+.tick--neutral li svg{ color:var(--text-dim); }
+
+/* ---------- Ablauf ---------- */
+.steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:step; }
+.step{
+  position:relative; padding:30px 24px 28px;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--bg-elev); overflow:hidden;
+}
+.step::before{
+  counter-increment:step; content:"0" counter(step);
+  position:absolute; top:16px; right:20px;
+  font-size:2.6rem; font-weight:800; letter-spacing:-.06em;
+  color:rgba(255,255,255,.05);
+}
+.step__bar{ width:34px; height:3px; border-radius:2px; background:var(--accent); margin-bottom:20px; }
+.step h3{ font-size:1.05rem; margin-bottom:10px; }
+.step p{ font-size:.9rem; color:var(--text-muted); }
+
+/* ---------- Mechanik: Auftritt → Clip → Person → Musik ---------- */
+.flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:15px; }
+.flow__node{
+  position:relative; padding:28px 22px;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:linear-gradient(180deg, rgba(255,255,255,.042), rgba(255,255,255,.012));
+}
+.flow__node:not(:last-child)::after{
+  content:"→"; position:absolute; right:-20px; top:50%; transform:translateY(-50%);
+  color:var(--text-dim); font-size:1.15rem; font-weight:700; z-index:2;
+}
+.flow__k{ font-size:.7rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); }
+.flow__node h3{ font-size:1.14rem; margin:11px 0 12px; }
+.flow__node p{ font-size:.89rem; color:var(--text-muted); }
+.flow__node--goal{
+  border-color:rgba(214,255,63,.32);
+  background:linear-gradient(180deg, rgba(214,255,63,.11), rgba(214,255,63,.02));
+}
+.flow__node--goal .flow__k{ color:var(--accent); }
+
+.sources{
+  margin-top:22px; padding:26px 28px;
+  border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-elev);
+}
+.sources h4{
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--text-dim); margin:0 0 16px; font-weight:800;
+}
+.chips{ display:flex; flex-wrap:wrap; gap:10px; }
+.chip{
+  font-size:.88rem; padding:9px 16px; border-radius:100px;
+  border:1px solid var(--line-strong); background:rgba(255,255,255,.035); color:var(--text-muted);
+}
+
+/* ---------- Pakete ---------- */
+.pricing{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; }
+.plan{
+  position:relative; display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:var(--bg-elev); padding:34px 30px 30px;
+  transition:transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+}
+.plan:hover{ transform:translateY(-5px); border-color:var(--line-strong); }
+.plan--feature{
+  background:linear-gradient(170deg, rgba(214,255,63,.1), rgba(139,92,255,.08) 55%, rgba(255,255,255,.02));
+  border-color:rgba(214,255,63,.34);
+  box-shadow:0 24px 70px -34px rgba(214,255,63,.5);
+}
+.plan__badge{
+  position:absolute; top:-12px; left:30px;
+  background:var(--accent); color:#0a0a0c;
+  font-size:.68rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase;
+  padding:6px 13px; border-radius:100px;
+}
+.plan__name{ font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); }
+.plan--feature .plan__name{ color:var(--accent); }
+.plan__amount{ display:flex; align-items:baseline; gap:10px; margin:16px 0 6px; }
+.plan__amount b{ font-size:3.3rem; font-weight:800; letter-spacing:-.055em; line-height:1; }
+.plan__amount span{ font-size:1rem; font-weight:700; color:var(--text-muted); }
+.plan__for{ font-size:.92rem; color:var(--text-muted); min-height:48px; }
+.plan__price{
+  margin:24px 0 22px; padding:14px 0;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.plan__price b{ font-size:1.05rem; font-weight:700; }
+.plan__price small{ display:block; font-size:.8rem; color:var(--text-dim); margin-top:3px; }
+.plan .tick{ margin-bottom:28px; }
+.plan .tick li{ font-size:.9rem; }
+.plan .btn{ margin-top:auto; }
+
+.pricing__foot{
+  margin-top:24px; padding:20px 24px;
+  border:1px dashed var(--line-strong); border-radius:var(--radius);
+  font-size:.9rem; color:var(--text-muted);
+  display:flex; gap:14px; align-items:flex-start;
+}
+.pricing__foot svg{ flex:0 0 auto; width:18px; height:18px; color:var(--accent); margin-top:3px; }
+
+/* ---------- Clipper-Band ---------- */
+.band{
+  border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(139,92,255,.2), transparent 55%),
+    radial-gradient(circle at 6% 92%, rgba(214,255,63,.13), transparent 52%),
+    var(--bg-elev);
+  padding:52px 46px;
+  display:flex; align-items:center; justify-content:space-between; gap:44px; flex-wrap:wrap;
+}
+.band__txt{ max-width:60ch; }
+.band h2{ font-size:clamp(1.7rem,3.2vw,2.4rem); margin-bottom:16px; }
+.band p{ color:var(--text-muted); font-size:1rem; }
+.band__pts{ display:flex; gap:26px; flex-wrap:wrap; margin-top:22px; }
+.band__pt{ font-size:.88rem; color:var(--text-muted); display:flex; align-items:center; gap:9px; }
+.band__pt b{ color:var(--text); font-weight:700; }
+
+/* ---------- FAQ ---------- */
+.faq{ max-width:840px; margin-inline:auto; border-top:1px solid var(--line); }
+.faq details{ border-bottom:1px solid var(--line); }
+.faq summary{
+  list-style:none; cursor:pointer; padding:24px 46px 24px 0;
+  font-size:1.04rem; font-weight:700; letter-spacing:-.02em;
+  position:relative; transition:color .2s;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary:hover{ color:var(--accent); }
+.faq summary::after{
+  content:""; position:absolute; right:8px; top:50%; width:11px; height:11px;
+  border-right:2px solid var(--text-dim); border-bottom:2px solid var(--text-dim);
+  transform:translateY(-70%) rotate(45deg); transition:transform .3s var(--ease), border-color .3s;
+}
+.faq details[open] summary::after{ transform:translateY(-20%) rotate(-135deg); border-color:var(--accent); }
+.faq details p{ padding:0 40px 26px 0; color:var(--text-muted); font-size:.96rem; margin-top:-6px; }
+
+/* ---------- Kontakt ---------- */
+.contact{
+  display:grid; grid-template-columns:.85fr 1.15fr; gap:52px; align-items:start;
+}
+.contact__aside h2{ margin:22px 0 18px; }
+.contact__list{ list-style:none; margin:34px 0 0; padding:0; display:grid; gap:20px; }
+.contact__list li{ display:flex; gap:14px; align-items:flex-start; }
+.contact__list svg{ flex:0 0 auto; width:19px; height:19px; color:var(--accent); margin-top:3px; }
+.contact__list b{ display:block; font-size:.93rem; font-weight:700; }
+.contact__list span{ font-size:.88rem; color:var(--text-muted); }
+.contact__list a{ font-size:.88rem; color:var(--text-muted); border-bottom:1px solid var(--line-strong); }
+.contact__list a:hover{ color:var(--accent); border-color:var(--accent); }
+
+.form{
+  background:var(--bg-elev); border:1px solid var(--line);
+  border-radius:var(--radius-lg); padding:36px;
+}
+.form__row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field{ margin-bottom:16px; }
+.field label{ display:block; font-size:.82rem; font-weight:700; margin-bottom:8px; letter-spacing:-.01em; }
+.field label i{ font-style:normal; color:var(--text-dim); font-weight:500; }
+.field input, .field select, .field textarea{
+  width:100%; padding:13px 15px;
+  background:rgba(255,255,255,.035); border:1px solid var(--line);
+  border-radius:12px; font-size:.94rem; transition:border-color .2s, background .2s;
+}
+.field textarea{ min-height:118px; resize:vertical; }
+.field input::placeholder, .field textarea::placeholder{ color:var(--text-dim); }
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none; border-color:rgba(214,255,63,.55); background:rgba(214,255,63,.045);
+}
+.field select{ appearance:none; cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e7a' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 14px center; background-size:15px; padding-right:40px;
+}
+.field select option{ background:#16161c; color:var(--text); }
+.consent{ display:flex; gap:11px; align-items:flex-start; margin:6px 0 22px; }
+.consent input{ width:17px; height:17px; margin-top:3px; accent-color:var(--accent); flex:0 0 auto; }
+.consent label{ font-size:.8rem; color:var(--text-muted); line-height:1.5; font-weight:500; margin:0; }
+.consent a{ color:var(--text); border-bottom:1px solid var(--line-strong); }
+.form__hint{ margin-top:16px; font-size:.78rem; color:var(--text-dim); text-align:center; }
+
+/* ---------- Footer ---------- */
+.ftr{ border-top:1px solid var(--line); padding:56px 0 40px; }
+.ftr__top{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:44px; }
+.ftr__brand{ max-width:34ch; }
+.ftr__brand p{ margin-top:16px; font-size:.88rem; color:var(--text-dim); }
+.ftr__cols{ display:flex; gap:70px; flex-wrap:wrap; }
+.ftr__col h4{ font-size:.74rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-dim); margin-bottom:16px; font-weight:800; }
+.ftr__col ul{ list-style:none; margin:0; padding:0; display:grid; gap:11px; }
+.ftr__col a{ font-size:.9rem; color:var(--text-muted); transition:color .2s; }
+.ftr__col a:hover{ color:var(--accent); }
+.ftr__bot{
+  border-top:1px solid var(--line); padding-top:26px;
+  display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  font-size:.82rem; color:var(--text-dim);
+}
+
+/* ---------- Reveal ----------
+   Der versteckte Zustand hängt an .js auf <html>. Ohne JavaScript
+   ist der komplette Inhalt sichtbar — nichts bleibt auf opacity:0 hängen. */
+.js .rv{ opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.js .rv.in{ opacity:1; transform:none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px){
+  .nav{ display:none; }
+  .hdr__cta .btn{ display:none; }
+  .burger{ display:grid; }
+  .stats{ grid-template-columns:repeat(2,1fr); }
+  .stat:nth-child(2){ border-right:none; }
+  .stat:nth-child(-n+2){ border-bottom:1px solid var(--line); }
+  .g-4{ grid-template-columns:repeat(2,1fr); }
+  .steps{ grid-template-columns:repeat(2,1fr); }
+  .flow{ grid-template-columns:repeat(2,1fr); }
+  .flow__node:nth-child(2)::after{ content:none; }  /* Zeilenende, kein Pfeil ins Leere */
+  .pricing{ grid-template-columns:1fr; }
+  .plan--feature{ order:-1; }
+  .contact{ grid-template-columns:1fr; gap:40px; }
+}
+@media (max-width: 720px){
+  .section{ padding:78px 0; }
+  .hero{ padding:140px 0 60px; }
+  .g-2,.g-3,.g-4,.compare,.steps,.flow{ grid-template-columns:1fr; }
+  /* Pfeile zeigen im gestapelten Zustand nach unten */
+  .flow{ gap:26px; }
+  .flow__node:not(:last-child)::after{
+    content:"↓"; right:auto; left:50%; top:auto; bottom:-22px; transform:translateX(-50%);
+  }
+  .form__row{ grid-template-columns:1fr; }
+  .band{ padding:36px 26px; }
+  .form{ padding:26px 22px; }
+  .hero__actions .btn{ flex:1 1 100%; }
+  /* Auf schmalen Screens untereinander statt mit Trennpunkten */
+  .hero__note{ flex-direction:column; align-items:flex-start; gap:4px; }
+  .hero__note span::before{ content:none; }
+  .stats{ grid-template-columns:1fr; }
+  .stat{ border-right:none; border-bottom:1px solid var(--line); }
+  .stat:last-child{ border-bottom:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  html{ scroll-behavior:auto; }
+  .rv{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__inner">
+    <a href="#top" class="logo" aria-label="clip-house Startseite">
+      <span class="logo__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#0a0a0c"><path d="M6 3.5 20 12 6 20.5z"/></svg>
+      </span>
+      <span>clip<i>-</i>house</span>
+    </a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#mechanik">Mechanik</a>
+      <a href="#markt">Markt</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#pakete">Pakete</a>
+      <a href="#clipper">Für Clipper</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="hdr__cta">
+      <a href="#kontakt" class="btn btn--primary btn--sm">Angebot anfragen</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+  <a href="#mechanik">Mechanik</a>
+  <a href="#markt">Markt</a>
+  <a href="#ablauf">Ablauf</a>
+  <a href="#pakete">Pakete</a>
+  <a href="#clipper">Für Clipper</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakt" class="btn btn--primary">Angebot anfragen</a>
+</nav>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+    <div class="hero__glow hero__glow--3"></div>
+  </div>
+
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Clip-Marketing für Labels &amp; Artists</span>
+
+    <h1 class="h-xl">
+      Euer Content. <br>
+      <span class="grad">Hunderte Feeds.</span>
+    </h1>
+
+    <p class="lead">
+      clip-house ist das Clipper-Netzwerk für den deutschen Musikmarkt. Wir sichten Podcast-Auftritte,
+      Interviews und Streams eurer Artists, schneiden daraus die Momente, die für sich funktionieren,
+      und spielen sie über die Kanäle unseres Netzwerks aus. Aus Aufmerksamkeit für die Person
+      wird Reichweite für die Musik.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#kontakt" class="btn btn--primary">Angebot anfragen <span class="arr">→</span></a>
+      <a href="#pakete" class="btn btn--ghost">Pakete ansehen</a>
+    </div>
+
+    <p class="hero__note">
+      <b>20, 40 oder 80 Clips pro Kampagne</b>
+      <span>Preis auf Anfrage</span>
+      <span>Antwort in der Regel innerhalb von 24 Std.</span>
+    </p>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span class="marquee__item">Podcast-Auftritte</span>
+        <span class="marquee__item">Interviews</span>
+        <span class="marquee__item">Stream-Momente</span>
+        <span class="marquee__item">TikTok</span>
+        <span class="marquee__item">Instagram Reels</span>
+        <span class="marquee__item">YouTube Shorts</span>
+        <span class="marquee__item">Backstage &amp; Tour</span>
+        <span class="marquee__item">Artist-Aufbau</span>
+      </div>
+      <div class="marquee__group">
+        <span class="marquee__item">Podcast-Auftritte</span>
+        <span class="marquee__item">Interviews</span>
+        <span class="marquee__item">Stream-Momente</span>
+        <span class="marquee__item">TikTok</span>
+        <span class="marquee__item">Instagram Reels</span>
+        <span class="marquee__item">YouTube Shorts</span>
+        <span class="marquee__item">Backstage &amp; Tour</span>
+        <span class="marquee__item">Artist-Aufbau</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="section section--tight" style="padding-top:60px;">
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat">
+        <div class="stat__num">20–80</div>
+        <div class="stat__lbl">Clips pro Kampagne, je nach Paket</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">3</div>
+        <div class="stat__lbl">Plattformen: TikTok, Reels, Shorts</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">100 %</div>
+        <div class="stat__lbl">Clipper unter Vertrag — Rechte &amp; Vergütung geregelt</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">1</div>
+        <div class="stat__lbl">Ansprechpartner statt Creator-Einzelverhandlung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MECHANIK ============ -->
+<section class="section" id="mechanik">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow eyebrow--plain">Die Mechanik</span>
+      <h2 class="h-lg">Niemand teilt eine Anzeige.<br>Aber jeder teilt einen guten Take.</h2>
+      <p class="lead">
+        Ein Ausschnitt aus dem Musikvideo ist als Werbung erkennbar, bevor er zu Ende geladen hat —
+        und wird weggescrollt. Ein Artist, der im Podcast eine Geschichte erzählt, im Interview
+        Klartext redet oder im Stream ausrastet: Das schauen Leute freiwillig und schicken es weiter.
+        Genau diese Momente clippen wir. Die Musik läuft mit — und wird gesucht, sobald die Person
+        hängen bleibt.
+      </p>
+    </div>
+
+    <div class="flow rv">
+      <article class="flow__node">
+        <span class="flow__k">Schritt 1</span>
+        <h3>Der Auftritt</h3>
+        <p>Der Artist sitzt im Podcast, gibt ein Interview, ist im Stream. Dort entstehen Storys, Meinungen, Schlagabtausch — Material, das sonst nach dem Upload liegen bleibt.</p>
+      </article>
+      <article class="flow__node">
+        <span class="flow__k">Schritt 2</span>
+        <h3>Der Clip</h3>
+        <p>Daraus schneiden wir Momente, die ohne Vorwissen funktionieren: Hook in der ersten Sekunde, Pointe am Ende. Aus zwei Stunden werden 40 Sekunden, die für sich stehen.</p>
+      </article>
+      <article class="flow__node">
+        <span class="flow__k">Schritt 3</span>
+        <h3>Die Person</h3>
+        <p>Die Leute merken sich den Menschen, nicht die Kampagne. Ein Take, der hängen bleibt, baut mehr auf als zehn Clips, die nach Promo aussehen.</p>
+      </article>
+      <article class="flow__node flow__node--goal">
+        <span class="flow__k">Das Ziel</span>
+        <h3>Die Musik</h3>
+        <p>Wer den Artist feiert, sucht den Namen. Über Profil, Sound unter dem Clip und Kommentarspalte ist der Weg von der Person zur Musik kurz.</p>
+      </article>
+    </div>
+
+    <div class="sources rv">
+      <h4>Woraus wir clippen</h4>
+      <div class="chips">
+        <span class="chip">Podcast-Auftritte</span>
+        <span class="chip">Interviews</span>
+        <span class="chip">Twitch- &amp; YouTube-Streams</span>
+        <span class="chip">Backstage &amp; Tour</span>
+        <span class="chip">Presse- &amp; Radiotermine</span>
+        <span class="chip">Q&amp;A- und Reaction-Formate</span>
+        <span class="chip">Live-Sets</span>
+        <span class="chip">Eigenes Rohmaterial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARKT ============ -->
+<section class="section" id="markt" style="padding-top:0;">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow eyebrow--plain">Der Markt</span>
+      <h2 class="h-lg">In den USA ist Clipping ein Kanal.<br>In Deutschland liegt das Material brach.</h2>
+      <p class="lead">
+        US-Podcasts, -Rapper und -Streamer arbeiten seit Jahren mit festen Clip-Netzwerken: Ein Team
+        sichtet die Folge, Dutzende Accounts spielen die besten Minuten aus, und wer zu Gast war,
+        wächst mit. In Deutschland gibt es die Formate längst — die Auftritte bleiben nach dem Upload
+        aber meistens einfach liegen. Einzelne Creator betreiben eigene Highlight-Kanäle; organisiert,
+        skalierbar und vertraglich abgesichert macht das bislang fast niemand.
+      </p>
+    </div>
+
+    <div class="compare rv">
+      <div class="compare__col">
+        <span class="compare__tag">Status quo Deutschland</span>
+        <h3>Zufall statt System</h3>
+        <ul class="tick tick--neutral">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Zweistündige Podcast-Folgen und Interviews versanden — niemand bringt sie in Feed-Format.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Einzelne Clipper arbeiten unbeauftragt — mal passt es zur Kampagne, mal nicht.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Keine Rechteklärung: Wer darf welchen Ausschnitt wie lange verwenden?
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Kein sauberes Reporting darüber, was tatsächlich veröffentlicht wurde.
+          </li>
+        </ul>
+      </div>
+
+      <div class="compare__col compare__col--now">
+        <span class="compare__tag">Mit clip-house</span>
+        <h3>Ein Auftrag, ein Netzwerk</h3>
+        <ul class="tick">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Ihr beauftragt eine Menge Clips — wir besetzen sie aus dem Netzwerk.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Wir sichten das Material und ziehen die Momente raus, die tragen.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Alle Clipper stehen bei uns unter Vertrag, ihr habt einen Vertrag mit uns.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Am Ende bekommt ihr eine vollständige Linkliste jedes veröffentlichten Clips.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABLAUF ============ -->
+<section class="section" id="ablauf" style="padding-top:0;">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow eyebrow--plain">So läuft's</span>
+      <h2 class="h-lg">Von der Anfrage zum Feed<br>in vier Schritten.</h2>
+    </div>
+
+    <div class="steps rv">
+      <article class="step">
+        <div class="step__bar"></div>
+        <h3>Briefing</h3>
+        <p>Ihr sagt uns, welcher Artist gepusht wird, welches Material freigegeben ist und worauf es einzahlen soll: Release, Tour oder Kanalaufbau.</p>
+      </article>
+      <article class="step">
+        <div class="step__bar"></div>
+        <h3>Sichtung</h3>
+        <p>Wir gehen durch Podcast-Folgen, Interviews und Stream-Mitschnitte und bauen daraus eine Liste der Momente mit Potenzial.</p>
+      </article>
+      <article class="step">
+        <div class="step__bar"></div>
+        <h3>Casting &amp; Schnitt</h3>
+        <p>Passende Clipper übernehmen die Momente und schneiden sie so, wie es auf ihrem Kanal und für ihr Publikum funktioniert.</p>
+      </article>
+      <article class="step">
+        <div class="step__bar"></div>
+        <h3>Launch &amp; Reporting</h3>
+        <p>Die Clips gehen gestaffelt live. Zum Abschluss bekommt ihr die vollständige Linkliste plus die öffentlich verfügbaren Kennzahlen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEISTUNGEN ============ -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow eyebrow--plain">Was drinsteckt</span>
+      <h2 class="h-lg">In jedem Paket enthalten.</h2>
+    </div>
+
+    <div class="grid g-3 rv">
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg></div>
+        <h3>Verträge statt Handschlag</h3>
+        <p>Jeder Clipper im Netzwerk hat einen Vertrag mit uns. Ihr habt einen Vertrag mit clip-house — eine Rechnung, eine Haftung, ein Ansprechpartner.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Rechte &amp; Nutzung geklärt</h3>
+        <p>Freigegebenes Material, definierte Nutzungsdauer, klare Kennzeichnung als Werbung. Bei Podcast- und Interview-Material klären wir mit, ob die Rechte beim Format oder beim Artist liegen — das wird gern übersehen.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Sichtung inklusive</h3>
+        <p>Ihr müsst uns nicht sagen, welche Minute gut ist. Wir gehen durch das Material und finden die Momente — das ist der Teil der Arbeit, den sonst niemand macht.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Gestaffelter Ausspielplan</h3>
+        <p>Clips werden über das Kampagnenfenster verteilt. Das hält den Sound länger in Bewegung als ein einzelner Peak.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3>Reporting zum Abschluss</h3>
+        <p>Linkliste aller Uploads plus die Kennzahlen, die die Plattformen öffentlich ausweisen. Nachvollziehbar, ohne Schönfärberei.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Kuratiertes Casting</h3>
+        <p>Wir besetzen nach Nische und Publikum. Ein Rap-Interview landet nicht auf einem Gaming-Kanal, nur damit die Zahl vollwird.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAKETE ============ -->
+<section class="section" id="pakete">
+  <div class="wrap">
+    <div class="shead shead--center rv">
+      <span class="eyebrow">Pakete</span>
+      <h2 class="h-lg">Drei Größen. Ein Prinzip.</h2>
+      <p class="lead">
+        Ihr bucht eine feste Anzahl veröffentlichter Clips. Alles andere — Sichtung, Casting,
+        Briefing, Steuerung, Reporting — ist enthalten. Preise machen wir pro Kampagne, weil Laufzeit,
+        Plattform-Mix und Materiallage den Aufwand bestimmen.
+      </p>
+    </div>
+
+    <div class="pricing rv">
+
+      <article class="plan">
+        <span class="plan__name">Starter</span>
+        <div class="plan__amount"><b>20</b><span>Clips</span></div>
+        <p class="plan__for">Für einen einzelnen Auftritt — eine Podcast-Folge, ein Interview — oder als erster Test des Kanals.</p>
+        <div class="plan__price">
+          <b>Preis auf Anfrage</b>
+          <small>Angebot innerhalb von 24 Std.</small>
+        </div>
+        <ul class="tick">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>20 veröffentlichte Clips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Material aus 1 Quelle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 Plattform nach Wahl</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sichtung &amp; Momentauswahl</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Linkliste zum Abschluss</li>
+        </ul>
+        <a href="#kontakt" class="btn btn--ghost btn--block" data-plan="Starter — 20 Clips">Anfragen</a>
+      </article>
+
+      <article class="plan plan--feature">
+        <span class="plan__badge">Beliebteste Wahl</span>
+        <span class="plan__name">Momentum</span>
+        <div class="plan__amount"><b>40</b><span>Clips</span></div>
+        <p class="plan__for">Der Standard: mehrere Auftritte über ein paar Wochen konsequent ausgespielt.</p>
+        <div class="plan__price">
+          <b>Preis auf Anfrage</b>
+          <small>Angebot innerhalb von 24 Std.</small>
+        </div>
+        <ul class="tick">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>40 veröffentlichte Clips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Material aus mehreren Quellen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>2 Plattformen im Mix</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gestaffelter Ausspielplan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zwischenstand zur Halbzeit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Abschlussreport mit Kennzahlen</li>
+        </ul>
+        <a href="#kontakt" class="btn btn--primary btn--block" data-plan="Momentum — 40 Clips">Anfragen <span class="arr">→</span></a>
+      </article>
+
+      <article class="plan">
+        <span class="plan__name">Wave</span>
+        <div class="plan__amount"><b>80</b><span>Clips</span></div>
+        <p class="plan__for">Für Album-Launch, Tour oder den dauerhaften Aufbau eines Artists als Person.</p>
+        <div class="plan__price">
+          <b>Preis auf Anfrage</b>
+          <small>Angebot innerhalb von 24 Std.</small>
+        </div>
+        <ul class="tick">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>80 veröffentlichte Clips</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Laufende Sichtung neuer Auftritte</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Alle 3 Plattformen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mehrere Artists pro Kampagne möglich</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Laufende Abstimmung während der Kampagne</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nachsteuerung bei Formaten, die tragen</li>
+        </ul>
+        <a href="#kontakt" class="btn btn--ghost btn--block" data-plan="Wave — 80 Clips">Anfragen</a>
+      </article>
+    </div>
+
+    <div class="pricing__foot rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p>
+        <b style="color:var(--text);">Was wir zusagen und was nicht:</b> Wir garantieren die vereinbarte Anzahl
+        veröffentlichter Clips, die Sichtung, das Casting und das Reporting. Reichweite garantieren wir nicht —
+        das tut auf diesen Plattformen seriös niemand. Wer euch Views verspricht, verkauft euch etwas anderes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FÜR CLIPPER ============ -->
+<section class="section" id="clipper" style="padding-top:0;">
+  <div class="wrap">
+    <div class="band rv">
+      <div class="band__txt">
+        <span class="eyebrow eyebrow--plain">Für Clipper</span>
+        <h2 style="margin-top:20px;">Du clippst sowieso schon.<br>Mach einen Auftrag daraus.</h2>
+        <p>
+          Wir suchen laufend Clipper mit eigenen Accounts, die aus einer zweistündigen Podcast-Folge
+          die 40 Sekunden rausholen, die laufen. Gespür für Timing, sauberer Schnitt, Deadlines
+          eingehalten — dafür gibt es bezahlte Aufträge mit klarem Briefing statt Arbeit auf Verdacht.
+        </p>
+        <div class="band__pts">
+          <span class="band__pt"><b>Bezahlte</b> Aufträge</span>
+          <span class="band__pt"><b>Freigegebenes</b> Material</span>
+          <span class="band__pt"><b>Fester</b> Vertrag</span>
+          <span class="band__pt"><b>Planbare</b> Deadlines</span>
+        </div>
+      </div>
+      <a href="#kontakt" class="btn btn--primary" data-plan="Bewerbung als Clipper">Als Clipper bewerben <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" style="padding-top:0;">
+  <div class="wrap">
+    <div class="shead shead--center rv">
+      <span class="eyebrow eyebrow--plain">Häufige Fragen</span>
+      <h2 class="h-lg">Kurz und ehrlich beantwortet.</h2>
+    </div>
+
+    <div class="faq rv">
+      <details>
+        <summary>Was ist Clipping überhaupt?</summary>
+        <p>Clipper schneiden aus langem Material — Podcast-Folgen, Interviews, Stream-Mitschnitten, Backstage-Footage — kurze Videos für TikTok, Reels und Shorts und veröffentlichen sie über eigene Accounts. Aus einem Auftritt, den sonst ein paar tausend Leute zu Ende schauen, werden Dutzende Einstiegspunkte im Feed.</p>
+      </details>
+      <details>
+        <summary>Warum Podcasts und Interviews statt Musikvideos?</summary>
+        <p>Weil ein Musikvideo-Ausschnitt sofort als Werbung erkennbar ist und weggescrollt wird. Ein Artist, der eine Geschichte erzählt, eine steile Meinung raushaut oder sich mit jemandem anlegt, ist Content, den Leute freiwillig anschauen und weiterschicken. Über die Person entsteht die Aufmerksamkeit — die Musik ist das, was danach gesucht wird. Deshalb setzen wir vorne an.</p>
+      </details>
+      <details>
+        <summary>Was, wenn es kaum Material gibt?</summary>
+        <p>Dann sagen wir das offen, bevor ihr bucht. Für eine sinnvolle Kampagne brauchen wir Auftritte, in denen der Artist wirklich spricht — Podcast, Interview, Stream, Q&amp;A. Wenn es das noch nicht gibt, ist der erste Schritt, solche Auftritte zu bekommen, nicht Clips zu buchen. Wir sagen euch gerne, welche Formate für den jeweiligen Artist realistisch sind.</p>
+      </details>
+      <details>
+        <summary>Wer produziert die Clips — ihr oder die Creator?</summary>
+        <p>Wir sichten das Material und legen fest, welche Momente raus sollen. Den Schnitt machen die Clipper aus unserem Netzwerk: Sie kennen die Formate ihrer Kanäle und wissen, was dort funktioniert. Wir prüfen das Ergebnis gegen eure Vorgaben, bevor es live geht.</p>
+      </details>
+      <details>
+        <summary>Wie ist das rechtlich abgesichert?</summary>
+        <p>Zweistufig: Jeder Clipper hat einen Vertrag mit clip-house, ihr habt einen Vertrag mit clip-house. Ihr gebt Material und Nutzungsumfang frei, wir geben genau diesen Rahmen weiter. Werbliche Kennzeichnung ist Teil des Briefings. Ein Punkt, der bei Podcast- und Interview-Material gern übersehen wird: Die Rechte am Mitschnitt liegen oft beim Format, nicht beim Artist oder Label. Das klären wir vor Kampagnenstart mit ab. Für euch bedeutet das: ein Vertragspartner, eine Rechnung — keine Einzelverhandlungen mit Dutzenden Accounts.</p>
+      </details>
+      <details>
+        <summary>Was kostet ein Paket?</summary>
+        <p>Preis auf Anfrage. Der Aufwand hängt an Laufzeit, Plattform-Mix, Materiallage und daran, wie eng das Briefing gefasst ist. Wir schauen uns eure Kampagne an und schicken ein konkretes Angebot — in der Regel innerhalb von 24 Stunden.</p>
+      </details>
+      <details>
+        <summary>Wie schnell kann eine Kampagne starten?</summary>
+        <p>Sobald Material und Freigaben vorliegen, brauchen wir üblicherweise wenige Tage für Sichtung, Casting und Briefing. Enge Release-Termine sagt uns bitte gleich in der Anfrage — dann planen wir rückwärts vom Release-Datum.</p>
+      </details>
+      <details>
+        <summary>Garantiert ihr Views oder Chart-Platzierungen?</summary>
+        <p>Nein. Wir garantieren die vereinbarte Anzahl veröffentlichter Clips, die Sichtung, das kuratierte Casting und ein vollständiges Reporting. Ob ein Clip viral geht, entscheiden Algorithmus und Publikum — nicht wir und niemand sonst. Wir erhöhen die Anzahl der Versuche und deren Qualität, nicht das Wetter.</p>
+      </details>
+      <details>
+        <summary>Arbeitet ihr nur mit Labels?</summary>
+        <p>Nein. Labels, Vertriebe, Management und Artists direkt — das Modell bleibt gleich. Es funktioniert auch abseits von Releases: Wer ohnehin regelmäßig in Podcasts und Interviews sitzt, kann daraus dauerhaft Reichweite ziehen statt nur im Release-Fenster.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="section" id="kontakt">
+  <div class="wrap contact">
+    <div class="contact__aside rv">
+      <span class="eyebrow">Anfrage</span>
+      <h2 class="h-lg">Sagt uns, was raus soll.</h2>
+      <p class="lead">
+        Artist, verfügbares Material, Zeitfenster — mehr brauchen wir für den ersten Aufschlag nicht.
+        Ihr bekommt ein konkretes Angebot statt einer Broschüre.
+      </p>
+
+      <ul class="contact__list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <div>
+            <b>E-Mail</b>
+            <!-- TODO: echte Adresse eintragen -->
+            <a href="mailto:hallo@clip-house.de">hallo@clip-house.de</a>
+          </div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div>
+            <b>Antwortzeit</b>
+            <span>In der Regel innerhalb von 24 Stunden, werktags.</span>
+          </div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div>
+            <b>Auch für Clipper</b>
+            <span>Bewerbungen laufen über dasselbe Formular — Paket auf „Bewerbung als Clipper“ stellen.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!--
+      Formular: sendet aktuell per mailto (funktioniert ohne Server).
+      Für echten Versand: action auf einen Endpoint setzen (z. B. Formspree,
+      Brevo, eigenes Backend) und das JS-Handling in initForm() entfernen.
+    -->
+    <form class="form rv" id="anfrageForm" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" placeholder="Vor- und Nachname" required>
+        </div>
+        <div class="field">
+          <label for="f-firma">Label / Firma <i>(optional)</i></label>
+          <input id="f-firma" name="firma" type="text" placeholder="z. B. Label, Vertrieb, Management">
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="f-mail">E-Mail</label>
+          <input id="f-mail" name="email" type="email" placeholder="name@label.de" required>
+        </div>
+        <div class="field">
+          <label for="f-paket">Paket</label>
+          <select id="f-paket" name="paket">
+            <option>Starter — 20 Clips</option>
+            <option selected>Momentum — 40 Clips</option>
+            <option>Wave — 80 Clips</option>
+            <option>Noch unklar — beratet mich</option>
+            <option>Bewerbung als Clipper</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-track">Artist <i>(optional)</i></label>
+        <input id="f-track" name="artist" type="text" placeholder="Wer soll gepusht werden?">
+      </div>
+
+      <div class="field">
+        <label for="f-msg">Welches Material gibt es?</label>
+        <textarea id="f-msg" name="nachricht" placeholder="Podcast-Auftritte, Interviews, Streams, eigenes Rohmaterial? Dazu gern: Release-Datum, Ziel der Kampagne, Besonderheiten …" required></textarea>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="f-consent" required>
+        <label for="f-consent">
+          Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und
+          verarbeitet werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block">Anfrage senden <span class="arr">→</span></button>
+      <p class="form__hint" id="formHint">Unverbindlich. Ihr bekommt ein Angebot, keinen Newsletter.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <a href="#top" class="logo">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#0a0a0c"><path d="M6 3.5 20 12 6 20.5z"/></svg>
+          </span>
+          <span>clip<i>-</i>house</span>
+        </a>
+        <p>Das Clipper-Netzwerk für den deutschen Musikmarkt. Wir machen aus Podcast-Auftritten, Interviews und Streams die Clips, die eure Artists im Feed halten.</p>
+      </div>
+
+      <div class="ftr__cols">
+        <div class="ftr__col">
+          <h4>Angebot</h4>
+          <ul>
+            <li><a href="#pakete">Pakete</a></li>
+            <li><a href="#mechanik">Mechanik</a></li>
+            <li><a href="#ablauf">Ablauf</a></li>
+            <li><a href="#markt">Markt</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="ftr__col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="#kontakt">Angebot anfragen</a></li>
+            <li><a href="#clipper">Als Clipper bewerben</a></li>
+            <li><a href="mailto:hallo@clip-house.de">hallo@clip-house.de</a></li>
+          </ul>
+        </div>
+        <div class="ftr__col">
+          <h4>Rechtliches</h4>
+          <!-- TODO: Impressum und Datenschutzerklärung sind Pflicht, sobald die
+               Seite online geht. Diese beiden Unterseiten müssen noch angelegt werden. -->
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ftr__bot">
+      <span>© <span id="year">2026</span> clip-house</span>
+      <span>Made in Germany · Podcasts · Interviews · Streams</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Sticky Header */
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('is-stuck', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* Mobile-Menü */
+  var burger = document.getElementById('burger');
+  var mnav   = document.getElementById('mobileNav');
+  function closeMenu(){
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = '';
+    burger.setAttribute('aria-expanded','false');
+  }
+  burger.addEventListener('click', function(){
+    var open = document.body.classList.toggle('menu-open');
+    document.body.style.overflow = open ? 'hidden' : '';
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+
+  /* Sprungmarken: explizit scrollen statt nur auf die Fragment-Navigation
+     zu vertrauen (die je nach Herkunft der Datei blockiert sein kann).
+     Der href bleibt als Fallback erhalten. */
+  var HDR_OFFSET = 88;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if(!id) return;
+    var target = document.getElementById(id);
+    if(!target) return;              // z. B. #impressum, solange keine Seite existiert
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + window.scrollY - HDR_OFFSET;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    if(history.replaceState) history.replaceState(null, '', '#' + id);
+  });
+
+  /* Scroll-Reveal */
+  var rv = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:.12, rootMargin:'0px 0px -60px 0px' });
+    rv.forEach(function(el){ io.observe(el); });
+  } else {
+    rv.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* Paket-Buttons wählen das Paket im Formular vor */
+  var select = document.getElementById('f-paket');
+  document.querySelectorAll('[data-plan]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var val = btn.getAttribute('data-plan');
+      Array.prototype.forEach.call(select.options, function(o){
+        if(o.text === val) select.value = o.value || o.text;
+      });
+      setTimeout(function(){ document.getElementById('f-name').focus({ preventScroll:true }); }, 620);
+    });
+  });
+
+  /* Formular → mailto (Platzhalter bis ein Endpoint steht) */
+  var EMPFAENGER = 'hallo@clip-house.de';  // TODO: echte Adresse eintragen
+  var form = document.getElementById('anfrageForm');
+  var hint = document.getElementById('formHint');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
+    var betreff = 'Anfrage clip-house — ' + select.value;
+    var body = [
+      'Name: '    + v('f-name'),
+      'Label/Firma: ' + (v('f-firma') || '—'),
+      'E-Mail: '  + v('f-mail'),
+      'Paket: '   + select.value,
+      'Artist: '  + (v('f-track') || '—'),
+      '',
+      'Material / Nachricht:',
+      v('f-msg')
+    ].join('\n');
+
+    window.location.href = 'mailto:' + EMPFAENGER +
+      '?subject=' + encodeURIComponent(betreff) +
+      '&body='    + encodeURIComponent(body);
+
+    hint.textContent = 'Euer E-Mail-Programm öffnet sich — bitte die Mail dort noch abschicken.';
+    hint.style.color = 'var(--accent)';
+  });
+
+  /* Jahreszahl im Footer */
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
